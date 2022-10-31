@@ -9,14 +9,14 @@ on:
         - main
 
 env:
-  AZURE_WEBAPP_NAME: "<Name of your webapp>"    # set this to your application's name
-  LOAD_TEST_RESOURCE: "<Name of your load test resource>"
-  LOAD_TEST_RESOURCE_GROUP: "<Name of your load test resource group>"
+  AZURE_WEBAPP_NAME: "stiglyloadtestapp2"    # set this to your application's name
+  LOAD_TEST_RESOURCE: "stiglyloadtest2"
+  LOAD_TEST_RESOURCE_GROUP: "stiglyloadtestapp2"
   AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
   NODE_VERSION: '14.15.1'                # set this to the node version to use
-  LOCATION: "West US"
-  APPINSIGHTLOCATION: "West US"
-  DATABASEACCOUNTLOCATION: "westus"
+  LOCATION: "West Europe"
+  APPINSIGHTLOCATION: "West Europe"
+  DATABASEACCOUNTLOCATION: "westeurope"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
