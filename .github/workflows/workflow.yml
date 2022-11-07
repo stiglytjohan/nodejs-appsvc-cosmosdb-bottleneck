@@ -92,9 +92,9 @@ jobs:
       #     inlineScript: |
       #       az group create --name "${{ env.LOAD_TEST_RESOURCE_GROUP }}" --location "${{ env.LOCATION }}"
       #     azPSVersion: "latest"      
-        - name: Create Resource Group
-          run: |
-            az group create --name "$LOAD_TEST_RESOURCE_GROUP" --location "$LOCATION"
+      - name: Create Resource Group
+        run: |
+          az group create --name "$LOAD_TEST_RESOURCE_GROUP" --location "$LOCATION"
           
       - name: Create Azure Load Testing resource
         uses: azure/arm-deploy@v1
