@@ -41,20 +41,29 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           
     # Deploy Arm template
-      - name: Deploy ARM Template
-        uses: azure/powershell@v1
-        continue-on-error: false
-        with:
-          inlineScript: |
-            az group create --name "${{ env.AZURE_WEBAPP_NAME }}-rg" --location "${{ env.LOCATION }}"
-            $deploymentOutputs = az deployment group create --resource-group "${{ env.AZURE_WEBAPP_NAME }}-rg" --mode Incremental --template-file ./windows-webapp-template.json --parameters webAppName="${{ env.AZURE_WEBAPP_NAME }}" --parameters hostingPlanName="${{ env.AZURE_WEBAPP_NAME }}-host" --parameters appInsightsLocation="${{ env.APPINSIGHTLOCATION }}" --parameters databaseAccountId="${{ env.AZURE_WEBAPP_NAME }}db" --parameters databaseAccountLocation="${{ env.DATABASEACCOUNTLOCATION }}" -o json
-            $deploymentOutputs = $deploymentOutputs | ConvertFrom-Json
-            $connectionString = [String]$deploymentOutputs.properties.outputs.azureCosmosDBAccountKeys.value
-            $setConnectionString = az webapp config appsettings set --name "${{ env.AZURE_WEBAPP_NAME }}" --resource-group "${{ env.AZURE_WEBAPP_NAME }}-rg" --settings CONNECTION_STRING="$connectionString"
-            $setAppSettings = az webapp config appsettings set --name "${{ env.AZURE_WEBAPP_NAME }}" --resource-group "${{ env.AZURE_WEBAPP_NAME }}-rg" --settings MSDEPLOY_RENAME_LOCKED_FILES=1
-            $setAppSettings = az webapp config appsettings set --name "${{ env.AZURE_WEBAPP_NAME }}" --resource-group "${{ env.AZURE_WEBAPP_NAME }}-rg" --settings SCM_DO_BUILD_DURING_DEPLOYMENT=true
-            $setAppSettings = az webapp config appsettings set --name "${{ env.AZURE_WEBAPP_NAME }}" --resource-group "${{ env.AZURE_WEBAPP_NAME }}-rg" --settings HEADER_VALUE="${{ secrets.MY_SECRET }}"
-          azPSVersion: "latest"
+      # - name: Deploy ARM Template
+      #   uses: azure/powershell@v1
+      #   continue-on-error: false
+      #   with:
+      #     inlineScript: |
+      #       az group create --name "${{ env.AZURE_WEBAPP_NAME }}-rg" --location "${{ env.LOCATION }}"
+      #       $deploymentOutputs = az deployment group create --resource-group "${{ env.AZURE_WEBAPP_NAME }}-rg" --mode Incremental --template-file ./windows-webapp-template.json --parameters webAppName="${{ env.AZURE_WEBAPP_NAME }}" --parameters hostingPlanName="${{ env.AZURE_WEBAPP_NAME }}-host" --parameters appInsightsLocation="${{ env.APPINSIGHTLOCATION }}" --parameters databaseAccountId="${{ env.AZURE_WEBAPP_NAME }}db" --parameters databaseAccountLocation="${{ env.DATABASEACCOUNTLOCATION }}" -o json
+      #       $deploymentOutputs = $deploymentOutputs | ConvertFrom-Json
+      #       $connectionString = [String]$deploymentOutputs.properties.outputs.azureCosmosDBAccountKeys.value
+      #       $setConnectionString = az webapp config appsettings set --name "${{ env.AZURE_WEBAPP_NAME }}" --resource-group "${{ env.AZURE_WEBAPP_NAME }}-rg" --settings CONNECTION_STRING="$connectionString"
+      #       $setAppSettings = az webapp config appsettings set --name "${{ env.AZURE_WEBAPP_NAME }}" --resource-group "${{ env.AZURE_WEBAPP_NAME }}-rg" --settings MSDEPLOY_RENAME_LOCKED_FILES=1
+      #       $setAppSettings = az webapp config appsettings set --name "${{ env.AZURE_WEBAPP_NAME }}" --resource-group "${{ env.AZURE_WEBAPP_NAME }}-rg" --settings SCM_DO_BUILD_DURING_DEPLOYMENT=true
+      #       $setAppSettings = az webapp config appsettings set --name "${{ env.AZURE_WEBAPP_NAME }}" --resource-group "${{ env.AZURE_WEBAPP_NAME }}-rg" --settings HEADER_VALUE="${{ secrets.MY_SECRET }}"
+      #     azPSVersion: "latest"
+    # Deploy Arm template (bash)
+      - name: Deploy ARM template
+        run: |
+          az group create --name "$AZURE_WEBAPP_NAME"-rg --location "$LOCATION"
+          az deployment group create --resource-group "$AZURE_WEBAPP_NAME"-rg --mode Incremental --template-file ./windows-webapp-template.json --parameters webAppName="$AZURE_WEBAPP_NAME" --parameters hostingPlanName="$AZURE_WEBAPP_NAME"-host --parameters appInsightsLocation="$APPINSIGHTLOCATION" --parameters databaseAccountId="$AZURE_WEBAPP_NAME"db --parameters databaseAccountLocation="$DATABASEACCOUNTLOCATION"
+          connectionString=$(az deployment group show -g "$AZURE_WEBAPP_NAME"-rg -n windows-webapp-template --query properties.outputs | jq -r '.azureCosmosDBAccountKeys.value')
+          az webapp config appsettings set --name "$AZURE_WEBAPP_NAME" --resource-group "$AZURE_WEBAPP_NAME"-rg --settings CONNECTION_STRING="$connectionString"
+          az webapp config appsettings set --name "$AZURE_WEBAPP_NAME" --resource-group "$AZURE_WEBAPP_NAME"-rg --settings MSDEPLOY_RENAME_LOCKED_FILES=1
+          az webapp config appsettings set --name "$AZURE_WEBAPP_NAME" --resource-group "$AZURE_WEBAPP_NAME"-rg --settings SCM_DO_BUILD_DURING_DEPLOYMENT=true
           
       - name: 'Deploy to Azure WebApp'
         uses: azure/webapps-deploy@v2
