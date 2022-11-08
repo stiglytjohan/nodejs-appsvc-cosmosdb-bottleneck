@@ -6,6 +6,6 @@ engineInstances: 1
 env:
 - name: webapp
   value: stiglyloadtestdemo.azurewebsites.net
-# failureCriteria: 
-#   - avg(response_time_ms) > 100
-#   - percentage(error) > 20
+failureCriteria: 
+  - avg(response_time_ms) > 100
+  - percentage(error) > 20
