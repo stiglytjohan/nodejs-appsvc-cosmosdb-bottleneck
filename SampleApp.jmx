@@ -14,11 +14,11 @@
     <hashTree>
       <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="jp@gc - Ultimate Thread Group" enabled="true">
         <collectionProp name="ultimatethreadgroupdata">
-          <collectionProp name="-1208843497">
+          <collectionProp name="1788288075">
             <stringProp name="1567">10</stringProp>
             <stringProp name="48">0</stringProp>
-            <stringProp name="48687">120</stringProp>
-            <stringProp name="48873">240</stringProp>
+            <stringProp name="1722">60</stringProp>
+            <stringProp name="48873">180</stringProp>
             <stringProp name="10">5</stringProp>
           </collectionProp>
         </collectionProp>
@@ -51,15 +51,15 @@
         <hashTree/>
         <kg.apc.jmeter.timers.VariableThroughputTimer guiclass="kg.apc.jmeter.timers.VariableThroughputTimerGui" testclass="kg.apc.jmeter.timers.VariableThroughputTimer" testname="jp@gc - Throughput Shaping Timer" enabled="true">
           <collectionProp name="load_profile">
-            <collectionProp name="1543842168">
+            <collectionProp name="-240746580">
               <stringProp name="1567">10</stringProp>
               <stringProp name="1691">50</stringProp>
-              <stringProp name="48687">120</stringProp>
+              <stringProp name="1722">60</stringProp>
             </collectionProp>
             <collectionProp name="1581295073">
               <stringProp name="1691">50</stringProp>
               <stringProp name="1691">50</stringProp>
-              <stringProp name="48873">240</stringProp>
+              <stringProp name="48873">180</stringProp>
             </collectionProp>
           </collectionProp>
         </kg.apc.jmeter.timers.VariableThroughputTimer>
@@ -67,11 +67,11 @@
       </hashTree>
       <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="jp@gc - Ultimate Thread Group" enabled="true">
         <collectionProp name="ultimatethreadgroupdata">
-          <collectionProp name="-1208843497">
+          <collectionProp name="1788288075">
             <stringProp name="1567">10</stringProp>
             <stringProp name="48">0</stringProp>
-            <stringProp name="48687">120</stringProp>
-            <stringProp name="48873">240</stringProp>
+            <stringProp name="1722">60</stringProp>
+            <stringProp name="48873">180</stringProp>
             <stringProp name="10">5</stringProp>
           </collectionProp>
         </collectionProp>
@@ -111,15 +111,15 @@
         <hashTree/>
         <kg.apc.jmeter.timers.VariableThroughputTimer guiclass="kg.apc.jmeter.timers.VariableThroughputTimerGui" testclass="kg.apc.jmeter.timers.VariableThroughputTimer" testname="jp@gc - Throughput Shaping Timer" enabled="true">
           <collectionProp name="load_profile">
-            <collectionProp name="1543842168">
+            <collectionProp name="-240746580">
               <stringProp name="1567">10</stringProp>
               <stringProp name="1691">50</stringProp>
-              <stringProp name="48687">120</stringProp>
+              <stringProp name="1722">60</stringProp>
             </collectionProp>
             <collectionProp name="1581295073">
               <stringProp name="1691">50</stringProp>
               <stringProp name="1691">50</stringProp>
-              <stringProp name="48873">240</stringProp>
+              <stringProp name="48873">180</stringProp>
             </collectionProp>
           </collectionProp>
         </kg.apc.jmeter.timers.VariableThroughputTimer>
@@ -127,11 +127,11 @@
       </hashTree>
       <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="jp@gc - Ultimate Thread Group" enabled="true">
         <collectionProp name="ultimatethreadgroupdata">
-          <collectionProp name="-1208843497">
+          <collectionProp name="-1761286659">
             <stringProp name="1567">10</stringProp>
             <stringProp name="48">0</stringProp>
-            <stringProp name="48687">120</stringProp>
-            <stringProp name="48873">240</stringProp>
+            <stringProp name="1722">60</stringProp>
+            <stringProp name="48873">180</stringProp>
             <stringProp name="10">5</stringProp>
           </collectionProp>
         </collectionProp>
@@ -164,15 +164,15 @@
         <hashTree/>
         <kg.apc.jmeter.timers.VariableThroughputTimer guiclass="kg.apc.jmeter.timers.VariableThroughputTimerGui" testclass="kg.apc.jmeter.timers.VariableThroughputTimer" testname="jp@gc - Throughput Shaping Timer" enabled="true">
           <collectionProp name="load_profile">
-            <collectionProp name="1543842168">
+            <collectionProp name="-240746580">
               <stringProp name="1567">10</stringProp>
               <stringProp name="1691">50</stringProp>
-              <stringProp name="48687">120</stringProp>
+              <stringProp name="1722">60</stringProp>
             </collectionProp>
             <collectionProp name="1581295073">
               <stringProp name="1691">50</stringProp>
               <stringProp name="1691">50</stringProp>
-              <stringProp name="48873">240</stringProp>
+              <stringProp name="48873">180</stringProp>
             </collectionProp>
           </collectionProp>
         </kg.apc.jmeter.timers.VariableThroughputTimer>
